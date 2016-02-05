@@ -4,16 +4,13 @@ function createRoomDirective() {
     return {
         restrict: 'E',
         templateUrl: './lib/directives/room/create/createRoomDirective.html',
-        controller: CreateRoomController,
-        controllerAs: 'vm'
+        controller: CreateRoomController
     }
 };
 
 //function JoinRoomController($scope, $rootScope, addressService, modalService) {
 function CreateRoomController($scope, $rootScope) {
-    var vm = this;
-
-    vm.submitForm = function(name) {
+    $scope.submitCreateRoom = function(name) {
         console.log('user submitted create room', name);
     }
 
