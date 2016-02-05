@@ -1,7 +1,7 @@
-angular.module('planningPoker').controller('HomeController', ['$scope', 'userService', function($scope, userService) {
+(function() {
+  angular.module('planningPoker').controller('HomeController', ['$scope', 'userService', HomeController]);
 
-    var vm = this;
+  function HomeController($scope, userService) {
 
-
-
-}]);
+  }
+})();

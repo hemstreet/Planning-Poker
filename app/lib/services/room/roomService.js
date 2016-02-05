@@ -1,12 +1,14 @@
-angular.module('planningPoker').service('roomService',['socket', function(socket) {
+(function() {
+  angular.module('planningPoker').service('roomService', ['socket', roomService]);
 
-  this.getUsersInRoom = function(roomId) {
+  function roomService(socket) {
+    this.getUsersInRoom = function(roomId) {
 
-    socket.emit('EVENT::GetUsersInRoom', {
-      roomId: roomId
-    })
+      socket.emit('EVENT::GetUsersInRoom', {
+        roomId:roomId
+      })
 
-    console.log(roomId);
-  };
-
-}]);
+      console.log(roomId);
+    };
+  }
+})();

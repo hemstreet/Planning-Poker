@@ -1,13 +1,17 @@
-angular.module('planningPoker').service('socketService',['socket', function(socket) {
+(function() {
+  angular.module('planningPoker').service('socketService',['socket', socketService]);
 
-  socket.on('EVENT::GetUsersInRoom', function(data) {
-    console.log(data);
-  });
+  function socketService(socket) {
 
-  this.send = function(name, value) {
+    socket.on('EVENT::GetUsersInRoom', function(data) {
+      console.log(data);
+    });
 
-    console.log(name, value);
+    this.send = function(name, value) {
+
+      console.log(name, value);
+
+    }
 
   }
-
-}]);
+})();

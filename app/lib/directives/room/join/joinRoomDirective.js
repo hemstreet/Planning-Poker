@@ -1,17 +1,21 @@
-angular.module('planningPoker').directive('joinRoom', joinRoomDirective);
+(function() {
+  angular.module('planningPoker').directive('joinRoom', joinRoomDirective);
 
-function joinRoomDirective(){
+  function joinRoomDirective() {
     return {
-        restrict: 'E',
-        templateUrl: './lib/directives/room/join/joinRoomDirective.html',
-        controller: JoinRoomController
+      restrict:'E',
+      templateUrl:'./lib/directives/room/join/joinRoomDirective.html',
+      controller:JoinRoomController
     };
-}
+  }
 
-//function JoinRoomController($scope, $rootScope, addressService, modalService) {
-function JoinRoomController($scope, $rootScope) {
+  //function JoinRoomController($scope, $rootScope, addressService, modalService) {
+  function JoinRoomController($scope, $rootScope) {
+    $scope.title = "Join Room";
+
     $scope.submitJoinRoom = function(name, roomNumber) {
-        console.log('user submitted join room', name, roomNumber);
+      console.log('user submitted join room', name, roomNumber);
     }
 
-};
+  };
+})();

@@ -1,7 +1,7 @@
-angular.module('planningPoker').controller('RoomController', ['$scope', '$routeParams', 'userService', function($scope, $routeParams, userService) {
+(function() {
+  angular.module('planningPoker').controller('RoomController', ['$scope', '$routeParams', 'userService', RoomController]);
 
-  var vm = this;
+  function RoomController($scope, $routeParams, userService) {
 
-  console.log('room controller', $routeParams.roomId);
-
-}]);
+  }
+});
