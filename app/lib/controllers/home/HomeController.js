@@ -2,6 +2,6 @@ angular.module('planningPoker').controller('HomeController', ['$scope', 'userSer
 
     var vm = this;
 
-    console.log('home controller');
+
 
 }]);

@@ -1,6 +1,20 @@
-angular.module('planningPoker').directive('createRoom', function() {
+angular.module('planningPoker').directive('createRoom', createRoomDirective);
+
+function createRoomDirective() {
     return {
         restrict: 'E',
-        templateUrl: './lib/directives/room/create/createRoomDirective.html'
+        templateUrl: './lib/directives/room/create/createRoomDirective.html',
+        controller: CreateRoomController,
+        controllerAs: 'vm'
     }
-});
+};
+
+//function JoinRoomController($scope, $rootScope, addressService, modalService) {
+function CreateRoomController($scope, $rootScope) {
+    var vm = this;
+
+    vm.submitForm = function(name) {
+        console.log('user submitted create room', name);
+    }
+
+};
