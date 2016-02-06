@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var Room = require('./lib/Room');
+var Room = require('./lib/_Room');
 
 app.use('/', express.static(__dirname + '/app'));
 
