@@ -1,5 +1,5 @@
 {
-  "name": "angular",
+  "name": "planning-poker",
   "version": "1.0.0",
   "description": "Planning poker game written in Angular / Socket.io",
   "main": "server.js",
