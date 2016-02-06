@@ -17,5 +17,5 @@
       console.log('user submitted join room', name, roomNumber);
     }
 
-  };
+  }
 })();

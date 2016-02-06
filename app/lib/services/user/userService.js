@@ -6,7 +6,7 @@
 
     this.vote = function(user, value) {
 
-      console.log(user, 'voted', value)
+      console.log(user, 'voted', value);
 
       socketService.send('EVENT:NAME', {
         user:user,

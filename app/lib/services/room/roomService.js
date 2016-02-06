@@ -6,7 +6,7 @@
 
       socket.emit('EVENT::GetUsersInRoom', {
         roomId:roomId
-      })
+      });
 
       console.log(roomId);
     };
