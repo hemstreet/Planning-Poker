@@ -9,12 +9,11 @@
     };
   }
 
-  //function JoinRoomController($scope, $rootScope, addressService, modalService) {
-  function JoinRoomController($scope, $rootScope) {
+  function JoinRoomController($scope, $location, $rootScope) {
     $scope.title = "Join Room";
 
     $scope.submitJoinRoom = function(name, roomNumber) {
-      console.log('user submitted join room', name, roomNumber);
+      $location.path('/room/' + roomNumber);
     }
 
   }

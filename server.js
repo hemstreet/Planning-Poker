@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var Room = require('./lib/Room');
 
 app.use('/', express.static(__dirname + '/app'));
 
@@ -7,21 +8,13 @@ app.get('/', function (req, res) {
     res.sendFile('/index.html');
 });
 
-app.get('/socket.io', function (req, res) {
-
-});
-
 var server = app.listen(3002, function () {
-    var host = server.address().address;
-    var port = server.address().port;
+    var serverAddress = server.address();
+    var host = serverAddress.address;
+    var port = serverAddress.port;
 
     console.log('Example app listening at http://%s:%s', host, port);
 });
 
-// Setup socket.io
 var io = require('socket.io')(server);
-
-io.on('connection', function (socket){
-    socket.emit('news', { hello: 'world' });
-    console.log('connected!');
-});
+new Room(io, server);

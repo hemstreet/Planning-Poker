@@ -1,17 +1,17 @@
 (function() {
 
-  angular.module('planningPoker').service('userService', ['socketService', userService]);
+  angular.module('planningPoker').service('userService', ['socket', userService]);
 
-  function userService(socketService) {
+  function userService(socket) {
 
     this.vote = function(user, value) {
 
       console.log(user, 'voted', value);
 
-      socketService.send('EVENT:NAME', {
-        user:user,
-        value:value
-      })
+      //socket.emit('EVENT:NAME', {
+      //  user:user,
+      //  value:value
+      //})
     }
 
   }
