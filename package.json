@@ -1,14 +1,10 @@
 {
   "name": "angular",
   "version": "1.0.0",
-  "description": "",
+  "description": "Planning poker game written in Angular / Socket.io",
   "main": "server.js",
-  "scripts": {
-    "test": "",
-    "start": "node server.js"
-  },
-  "author": "",
-  "license": "ISC",
+  "author": "Jon Hemstreet",
+  "license": "MIT",
   "dependencies": {
     "angular-route": "latest",
     "express": "latest",
