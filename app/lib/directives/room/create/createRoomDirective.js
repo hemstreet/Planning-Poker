@@ -1,3 +1,5 @@
+"use strict";
+
 (function() {
   angular.module('planningPoker').directive('createRoom', ['$location', 'roomService', createRoomDirective]);
 
@@ -16,10 +18,15 @@
 
     $scope.submitCreateRoom = function(name) {
 
-      var roomId = roomService.createRoom(name);
+      roomService.getRooms().then(function(data) {
+
+        console.log('rooms', data);
+      });
+
+      //var roomId = roomService.createRoom(name);
       console.log('user submitted create room', name);
 
-      $location.path('/room/' + roomId);
+      //$location.path('/room/' + roomId);
     }
 
   }

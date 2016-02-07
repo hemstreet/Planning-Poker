@@ -1,6 +1,8 @@
+"use strict";
+
 var express = require('express');
 var app = express();
-var Room = require('./lib/Room');
+var Socket = require('./lib/Socket');
 
 app.use('/', express.static(__dirname + '/app'));
 
@@ -17,4 +19,4 @@ var server = app.listen(3002, function () {
 });
 
 var io = require('socket.io')(server);
-new Room(io, server);
+new Socket(io, server);

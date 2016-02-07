@@ -1,3 +1,5 @@
+"use strict";
+
 var app = angular.module('planningPoker', ['ngRoute', 'btford.socket-io']).
 factory('socket', function (socketFactory) {
     return socketFactory();

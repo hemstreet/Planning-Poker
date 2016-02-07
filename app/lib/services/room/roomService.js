@@ -1,45 +1,84 @@
-(function() {
-  angular.module('planningPoker').service('roomService', ['socket', roomService]);
+"use strict";
 
-  function roomService(socket) {
+(function() {
+  angular.module('planningPoker').service('roomService', ['$q', 'socket', roomService]);
+
+  function roomService($q, socket) {
 
     this.getRooms = function() {
+      var deferred = $q.defer();
 
-      return this.rooms;
+      socket.emit('ROOM:GetRooms', {});
+
+      socket.on('ROOM:DidGetRooms', function(rooms) {
+        deferred.resolve(rooms);
+      });
+
+      return deferred.promise;
+    };
+
+    this.getRoomById = function(id) {
+
+      var deferred = $q.defer();
+
+      socket.emit('ROOM:GetRoomId', id);
+
+      socket.on('ROOM:DidGetRoomId', function(users) {
+        deferred.resolve(users);
+      });
+
+      return deferred.promise;
     };
 
     this.createRoom = function(user) {
 
+      var deferred = $q.defer();
+
+      this.getRooms().then(function(rooms) {
+
+        var roomId = this.generateRoomId();
+
+        while(rooms[roomId]) {
+          roomId = this.generateRoomId();
+        }
+
+        socket.emit('ROOM:CreateRoomById', roomId).then(function() {
+          this.addUserToRoomById(user, roomId);
+        }.bind(this));
+
+      }.bind(this));
+
+      //socket.emit('ROOM:GetRooms', {});
+      //
+      //socket.on('ROOM:DidGetRooms', function(rooms) {
+      //  deferred.resolve(rooms);
+      //});
+
       // Make this room Id generation more reliable
-      var roomId = Math.floor(Math.random() * 10000) + 1;
 
-      this.rooms[roomId] = [];
-
-      this.addUser(user, roomId);
-
-      return roomId;
+      return deferred.promise;
 
     };
 
-    this.addUser = function(user, roomId) {
+    this.addUserToRoomById = function(user, id) {
 
-      this.rooms[roomId].push(user);
+      var deferred = $q.defer();
 
-      return roomId;
+      socket.emit('ROOM:AddUserToRoomById', {
+        user: user,
+        id: id
+      });
 
+      socket.on('ROOM:DidAddUserToRoomById', function(users) {
+        deferred.resolve(users);
+      }.bind(this));
+
+      return deferred.promise;
     };
-    this.removeUser = function(user, roomId) {
 
-      delete this.rooms[roomId][user];
+    this.generateRoomId = function() {
+      return Math.floor(Math.random() * 10000) + 1;
+    }
 
-      if(this.rooms[roomId].length = 0) {
-        delete this.rooms[roomId];
-      }
-
-    };
-
-    this.getUsersByRoomId = function(roomId) {
-
-    };
   }
 })();

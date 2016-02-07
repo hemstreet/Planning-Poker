@@ -1,5 +1,7 @@
+"use strict";
+
 (function() {
-  angular.module('planningPoker').directive('joinRoom', joinRoomDirective);
+  angular.module('planningPoker').directive('joinRoom', ['$location', 'socket', joinRoomDirective]);
 
   function joinRoomDirective() {
     return {
@@ -9,12 +11,14 @@
     };
   }
 
-  function JoinRoomController($scope, $location, $rootScope) {
+  function JoinRoomController($scope, $location, socket) {
     $scope.title = "Join Room";
 
+
+    console.log(socket);
     $scope.submitJoinRoom = function(name, roomNumber) {
       $location.path('/room/' + roomNumber);
-    }
+    };
 
   }
 })();

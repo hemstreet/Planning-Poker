@@ -1,3 +1,5 @@
+"use strict";
+
 (function() {
 
   angular.module('planningPoker').service('userService', ['socket', userService]);

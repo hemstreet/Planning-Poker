@@ -1,3 +1,5 @@
+"use strict";
+
 (function() {
   angular.module('planningPoker').controller('HomeController', ['$scope', 'userService', HomeController]);
 
