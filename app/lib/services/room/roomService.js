@@ -46,7 +46,10 @@
 
                 socket.on('ROOM:DidCreateRoomById', function (id) {
                     this.addUserToRoomById(user, id).then(function (data) {
-                        deferred.resolve(data);
+                        deferred.resolve({
+                            id: id,
+                            user: data
+                        });
                     }.bind(this));
                 }.bind(this));
 

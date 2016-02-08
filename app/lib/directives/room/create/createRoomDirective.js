@@ -17,8 +17,8 @@
 
         $scope.submitCreateRoom = function (name) {
 
-            roomService.createRoom(name).then(function (users) {
-                console.log('POST create room', users);
+            roomService.createRoom(name).then(function (options) {
+                $location.path('/room/' + options.id);
             });
 
             //roomService.getRooms().then(function(data) {
