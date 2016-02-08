@@ -1,20 +1,20 @@
 "use strict";
 
-(function() {
+(function () {
 
-  angular.module('planningPoker').service('userService', ['socket', userService]);
+    angular.module('planningPoker').service('userService', ['socket', userService]);
 
-  function userService(socket) {
+    function userService(socket) {
 
-    this.vote = function(user, value) {
+        this.vote = function (user, value) {
 
-      console.log(user, 'voted', value);
+            console.log(user, 'voted', value);
 
-      //socket.emit('EVENT:NAME', {
-      //  user:user,
-      //  value:value
-      //})
+            //socket.emit('EVENT:NAME', {
+            //  user:user,
+            //  value:value
+            //})
+        }
+
     }
-
-  }
 })();

@@ -1,17 +1,27 @@
 "use strict";
 
-(function() {
-  angular.module('planningPoker').controller('RoomController', ['$scope', '$routeParams', 'socket', RoomController]);
+(function () {
+    angular.module('planningPoker').controller('RoomController', ['$scope', '$routeParams', 'roomService', 'socket', RoomController]);
 
-  function RoomController($scope, $routeParams, socket) {
+    function RoomController($scope, $routeParams, roomService, socket) {
 
-    var roomId = $routeParams.roomId;
+        var roomId = $routeParams.roomId;
 
-    socket.emit('ROOM:GetUsersByRoomId', {
-      roomId: roomId,
-      callback: function(users) {
-        console.log('Users in room', users);
-      }
-    });
-  }
+        $scope.roomId = roomId;
+
+        roomService.getRoomById(roomId).then(function (room) {
+
+            console.log(room);
+
+        });
+
+        socket.on('ROOM:UserJoinRoomById', function (data) {
+            $scope.users = data.users;
+        });
+
+        socket.on('ROOM:UserDidVoteByRoomId', function (data) {
+            $scope.users = data.users;
+        })
+
+    }
 })();

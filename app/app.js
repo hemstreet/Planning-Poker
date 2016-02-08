@@ -1,11 +1,10 @@
 "use strict";
 
-var app = angular.module('planningPoker', ['ngRoute', 'btford.socket-io']).
-factory('socket', function (socketFactory) {
+var app = angular.module('planningPoker', ['ngRoute', 'btford.socket-io']).factory('socket', function (socketFactory) {
     return socketFactory();
 });
 
-app.config(['$routeProvider', function($routeProvider) {
+app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: 'views/home.html',
         controller: 'HomeController',

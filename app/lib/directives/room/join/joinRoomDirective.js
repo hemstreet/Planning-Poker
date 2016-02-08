@@ -1,24 +1,33 @@
 "use strict";
 
-(function() {
-  angular.module('planningPoker').directive('joinRoom', ['$location', 'socket', joinRoomDirective]);
+(function () {
+    angular.module('planningPoker').directive('joinRoom', ['$location', 'roomService', joinRoomDirective]);
 
-  function joinRoomDirective() {
-    return {
-      restrict:'E',
-      templateUrl:'./lib/directives/room/join/joinRoomDirective.html',
-      controller:JoinRoomController
-    };
-  }
+    function joinRoomDirective() {
+        return {
+            restrict: 'E',
+            templateUrl: './lib/directives/room/join/joinRoomDirective.html',
+            controller: JoinRoomController
+        };
+    }
 
-  function JoinRoomController($scope, $location, socket) {
-    $scope.title = "Join Room";
+    function JoinRoomController($scope, $location, roomService) {
+        $scope.title = "Join Room";
 
+        $scope.submitJoinRoom = function (name, roomNumber) {
+            $scope.error = "";
 
-    console.log(socket);
-    $scope.submitJoinRoom = function(name, roomNumber) {
-      $location.path('/room/' + roomNumber);
-    };
-
-  }
+            roomService.getRooms().then(function (rooms) {
+                if (rooms[roomNumber]) {
+                    roomService.addUserToRoomById(name, roomNumber).then(function (user) {
+                        console.log('user added to room', user);
+                        //$location.path('/room/' + roomNumber);
+                    });
+                }
+                else {
+                    $scope.error = "Error: Not a valid room";
+                }
+            });
+        };
+    }
 })();
