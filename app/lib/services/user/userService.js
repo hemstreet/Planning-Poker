@@ -2,38 +2,17 @@
 
 (function () {
 
-    angular.module('planningPoker').service('userService', ['$q', 'socket', userService]);
+    angular.module('planningPoker').service('userService', ['$location', 'socket', userService]);
 
-    function userService($q, socket) {
+    function userService($location, socket) {
 
-        this.currentUser = null;
-
-        this.setCurrentUser = function(user) {
-            this.currentUser = user;
-            return this.currentUser;
-        };
-
-        this.getCurrentUser = function() {
-            return this.currentUser;
-        }
-        this.vote = function (vote) {
-
-            var deferred = $q.defer();
-
+        this.vote = function (vote, id) {
+            // Callback will be handled by controller on USER:DidVoteByRoomId
             socket.emit("USER:VoteByRoomId", {
-                user: this.getCurrentUser(),
+                userName: $location.search().username,
+                id: id,
                 vote: vote,
             });
-
-            socket.on("USER:DidVoteByRoomId", function(options) {
-
-                deferred.resolve(options);
-
-            });
-
-            return deferred.promise;
-
         }
-
     }
 })();

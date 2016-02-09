@@ -9,6 +9,8 @@
 
         $scope.roomId = this.roomId;
 
+        $scope.allVoted = false;
+
         // Fire and forget, we will catch it via sockets to stay consistent
         $scope.resetVotes = function() {
             roomService.resetVotes(this.roomId);
@@ -22,6 +24,7 @@
         socket.on('ROOM:DidResetVotes', function(data) {
             if(this.roomId == data.id) {
                 $scope.users = data.users;
+                $scope.allVoted = false;
             }
         }.bind(this));
         // If a user comes in when a room is already created, update the user list
@@ -32,9 +35,15 @@
         }.bind(this));
 
         socket.on('USER:DidVoteByRoomId', function (data) {
-            if (data.user.id == this.roomId) {
+
+            if (data.id == this.roomId) {
                 $scope.users = data.users;
+
+                // Have all of the users voted?
+                $scope.allVoted = (data.allVoted) ? true : false;
+
             }
+
         }.bind(this));
 
         socket.on('ROOM:UserDidLeave', function (options) {

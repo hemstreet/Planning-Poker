@@ -32,15 +32,10 @@
         ];
 
         $scope.vote = function(value) {
-            userService.vote(value).then(function(data) {
 
-                if(roomId == data.user.id) {
-                    $scope.activeVote = data.vote;
-                    // Pass back the list of users and who has voted already
-                    $scope.users = data.users;
-                }
+            // Callback is handled in roomController
+            userService.vote(value, this.roomId);
 
-            });
         };
     }
 

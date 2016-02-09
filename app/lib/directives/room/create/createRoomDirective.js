@@ -18,8 +18,7 @@
         $scope.submitCreateRoom = function (name) {
 
             roomService.createRoom(name).then(function (options) {
-                // sorry
-                $location.path('/room/' + options.id);
+                $location.path('/room/' + options.id).search({username: name});
             });
         };
     };
