@@ -1,19 +1,21 @@
-<h2>Join Room</h2>
-
-<form class="ui form" ng-class="{'error' : error}" ng-submit="submitJoinRoom(join.username, join.roomNumber)">
-    <div class="field">
+<h2 class="md-title">Join Room</h2>
+<form ng-submit="submitJoinRoom(join.username, join.roomNumber)" name="joinRoom">
+    <md-input-container class="md-block">
         <label>Username</label>
-        <input type="text" name="user-name" placeholder="User name" ng-model="join.username">
-    </div>
+        <input name="username" ng-model="join.username" required>
+        <div ng-messages="joinRoom.username.$error">
+            <div ng-message="required">This is required.</div>
+        </div>
+    </md-input-container>
 
-    <div class="field">
-        <label>Username</label>
-        <input type="text" name="room-number" placeholder="Room Number" ng-model="join.roomNumber">
+    <md-input-container class="md-block">
+        <label>Room Number</label>
+        <input type="text" name="roomNumber" ng-model="join.roomNumber" required>
+        <div ng-messages="joinRoom.roomNumber.$error">
+            <div ng-message="required">This is required.</div>
+        </div>
+    </md-input-container>
+    <div layout="row" layout-align="end center">
+        <md-button class="md-raised md-button md-accent" type="submit">Join</md-button>
     </div>
-    <div class="ui error message">
-        <div class="header">Error</div>
-        <p>Not a valid room</p>
-    </div>
-    <button class="ui button" type="submit">Submit</button>
-
 </form>
