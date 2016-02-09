@@ -1,8 +1,8 @@
 Room #{{roomId}}
 
-Users: {{users}}
-
 All Voted: {{allVoted}}
+
+<user-tile ng-model="users"></user-tile>
 <vote ng-class="{'all-voted' : allVoted}"></vote>
 
 <button ng-click="resetVotes()">Reset Votes</button>

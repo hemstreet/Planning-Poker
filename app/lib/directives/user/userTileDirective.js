@@ -7,12 +7,14 @@
         return {
             restrict: 'E',
             templateUrl: './lib/directives/user/userTileDirective.html',
-            controller: UserTileController
+            controller: UserTileController,
+            scope: {
+                users: '=ngModel'
+            }
         }
     }
 
     function UserTileController($scope) {
-
 
     }
 
