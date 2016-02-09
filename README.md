@@ -20,7 +20,7 @@ The web server will then be started at `http://localhost:3002`
 @TODO
 ===
 ```
-Fix voting as last entered user ( setCurrentUser Service )
+Fix UI
 
 ```
 
