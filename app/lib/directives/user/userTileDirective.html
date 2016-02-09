@@ -1,13 +1,10 @@
-<div class="ui four doubling cards">
-    <div class="card" ng-repeat="(key, user) in users" ng-class="{'active-vote': user === activeVote}">
-        <div class="image">
-            <img src="/assets/images/logo-white.png">
+<div style="flex-wrap:wrap" class="md-padding" layout="row">
+    <md-list-item class="md-2-line" flex="15" ng-repeat="(key, user) in users">
+        <img ng-src="http://thecatapi.com/api/images/get?format=src" class="md-avatar"/>
+        <div class="md-list-item-text">
+            <h3><strong>{{user.name}}</strong></h3>
+            <p>Voting</p>
         </div>
-        <div class="content">
-            <a class="header">{{user.name}}</a>
-            <div ng-show="allVoted" class="meta">
-                <a class="group">{{user.vote}}</a>
-            </div>
-        </div>
-    </div>
+        <h4 ng-show="allVoted">{{user.vote}}</h4>
+    </md-list-item>
 </div>

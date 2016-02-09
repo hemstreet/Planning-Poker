@@ -1,10 +1,13 @@
-<h2>Create Room</h2>
-
-<form class="ui form" ng-submit="submitCreateRoom(create.username)">
-    <div class="field">
+<h2 class="md-title">Create Room</h2>
+<form ng-submit="submitCreateRoom(create.username)" name="createRoom">
+    <md-input-container class="md-block" flex-gt-xs>
         <label>Username</label>
-        <input type="text" name="user-name" placeholder="User Name" ng-model="create.username">
+        <input name="username" ng-model="create.username" required>
+        <div ng-messages="createRoom.username.$error">
+            <div ng-message="required">This is required.</div>
+        </div>
+    </md-input-container>
+    <div layout="row" layout-align="end center">
+        <md-button class="md-raised md-button md-accent" type="submit" layout-align="end center">Create</md-button>
     </div>
-
-    <button class="ui button" type="submit">Submit</button>
 </form>
