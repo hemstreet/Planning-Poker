@@ -21,7 +21,7 @@
             var deferred = $q.defer();
 
             socket.emit("USER:VoteByRoomId", {
-                user: this.currentUser,
+                user: this.getCurrentUser(),
                 vote: vote,
             });
 

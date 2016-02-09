@@ -5,6 +5,17 @@
 
     function roomService($q, socket, userService) {
 
+        this.currentRoom = null;
+
+        this.setCurrentRoom = function(id) {
+            this.currentRoom = id;
+            return this.currentRoom;
+        };
+
+        this.getCurrentRoom = function() {
+            return this.currentRoom;
+        }
+
         this.getRooms = function () {
             var deferred = $q.defer();
 
@@ -72,6 +83,7 @@
             socket.on('ROOM:DidAddUserToRoomById', function (user) {
 
                 userService.setCurrentUser(user);
+                this.setCurrentRoom(id);
 
                 deferred.resolve(user);
             }.bind(this));

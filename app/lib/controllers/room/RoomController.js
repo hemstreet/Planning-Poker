@@ -20,8 +20,10 @@
         });
 
         socket.on('ROOM:DidResetVotes', function(data) {
-           $scope.users = data.users;
-        });
+            if(this.roomId == data.id) {
+                $scope.users = data.users;
+            }
+        }.bind(this));
         // If a user comes in when a room is already created, update the user list
         socket.on('ROOM:DidAddUserToRoomById', function (options) {
             if (this.isRoom(options.id)) {
