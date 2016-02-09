@@ -1,6 +1,10 @@
 <h1>Room #{{roomId}}</h1>
 
-<user-tile ng-model="users" all-voted="allVoted"></user-tile>
-<vote ng-class="{'all-voted' : allVoted}"></vote>
+<div class="ui container">
+    <user-tile ng-model="users" all-voted="allVoted"></user-tile>
 
-<button class="red ui button" ng-click="resetVotes()">Reset Votes</button>
+    <vote ng-class="{'all-voted' : allVoted}"></vote>
+</div>
+<div class="ui container right aligned">
+    <button class="red ui button" ng-click="resetVotes()">Reset Votes</button>
+</div>
