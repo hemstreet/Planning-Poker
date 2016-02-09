@@ -1,7 +1,6 @@
-<div ng-repeat="(key, value) in values">
-    <button ng-click="vote(value)" ng-class="{'active-vote': value === activeVote}">{{value}}</button>
-</div>
-
-<div ng-repeat="(key, user) in users">
-    <button ng-class="{'user-active-vote': !!user.vote}">{{user.name}}</button>
+Your vote: {{activeVote}}
+<div class="spaced">
+    <span ng-repeat="(key, value) in values">
+        <button class="ui button" ng-click="vote(value)" ng-class="{'blue': value === activeVote}">{{value}}</button>
+    </span>
 </div>

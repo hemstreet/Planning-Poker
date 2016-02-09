@@ -1,6 +1,10 @@
-<h2>{{title}}</h2>
+<h2>Create Room</h2>
 
-<form ng-submit="submitCreateRoom(create.username)">
-    <input type="text" ng-model="create.username" name="name" />
-    <input type="submit" id="submit" value="Submit" />
+<form class="ui form" ng-submit="submitCreateRoom(create.username)">
+    <div class="field">
+        <label>Username</label>
+        <input type="text" name="user-name" placeholder="User Name" ng-model="create.username">
+    </div>
+
+    <button class="ui button" type="submit">Submit</button>
 </form>

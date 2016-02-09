@@ -1,3 +1,13 @@
-<div ng-repeat="(key, value) in users">
-    <button ng-class="{'active-vote': value === activeVote}">{{value}}</button>
+<div class="ui four doubling cards">
+    <div class="card" ng-repeat="(key, user) in users" ng-class="{'active-vote': user === activeVote}">
+        <div class="image">
+            <img src="/assets/images/logo-white.png">
+        </div>
+        <div class="content">
+            <a class="header">{{user.name}}</a>
+            <div ng-show="allVoted" class="meta">
+                <a class="group">{{user.vote}}</a>
+            </div>
+        </div>
+    </div>
 </div>

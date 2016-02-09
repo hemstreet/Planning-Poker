@@ -9,7 +9,8 @@
             templateUrl: './lib/directives/user/userTileDirective.html',
             controller: UserTileController,
             scope: {
-                users: '=ngModel'
+                users: '=ngModel',
+                allVoted: "=allVoted",
             }
         }
     }

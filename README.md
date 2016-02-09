@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="assets/logo.png" alt="Logo"/>
+    <img src="app/assets/images/logo.png" alt="Logo"/>
 </p>
 
 ***This is a work in progress***

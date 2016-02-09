@@ -13,10 +13,9 @@
 
     function JoinRoomController($scope, $location, roomService) {
 
-        $scope.title = "Join Room";
-
         $scope.submitJoinRoom = function (name, roomNumber) {
-            $scope.error = "";
+
+            $scope.error = null;
 
             roomService.getRooms().then(function (rooms) {
                 if (rooms[roomNumber]) {
@@ -25,7 +24,7 @@
                     });
                 }
                 else {
-                    $scope.error = "Error: Not a valid room";
+                    $scope.error = true;
                 }
             });
         };

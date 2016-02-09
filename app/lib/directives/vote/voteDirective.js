@@ -1,7 +1,7 @@
 "use strict";
 
 (function () {
-    angular.module('planningPoker').directive('vote', ['userService', 'roomService', voteDirective]);
+    angular.module('planningPoker').directive('vote', ['userService', 'roomService', 'socket', voteDirective]);
 
     function voteDirective() {
         return {
@@ -11,7 +11,7 @@
         }
     }
 
-    function VoteController($scope, userService, roomService) {
+    function VoteController($scope, userService, roomService, socket) {
 
         var roomId = roomService.getCurrentRoom();
         $scope.roomId = roomId;
@@ -36,7 +36,15 @@
             // Callback is handled in roomController
             userService.vote(value, this.roomId);
 
+            $scope.activeVote = value;
+
         };
+
+        socket.on('ROOM:DidResetVotes', function(data) {
+            if(roomId == data.id) {
+                $scope.activeVote = '';
+            }
+        }.bind(this));
     }
 
 })();

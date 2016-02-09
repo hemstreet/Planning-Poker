@@ -14,6 +14,8 @@
         // Fire and forget, we will catch it via sockets to stay consistent
         $scope.resetVotes = function() {
             roomService.resetVotes(this.roomId);
+            $scope.allVoted = false;
+
         }
 
         // On initial load, get the user list for the room

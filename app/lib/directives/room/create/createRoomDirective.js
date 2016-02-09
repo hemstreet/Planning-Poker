@@ -13,8 +13,6 @@
 
     function CreateRoomController($scope, $location, roomService) {
 
-        $scope.title = "Create Room";
-
         $scope.submitCreateRoom = function (name) {
 
             roomService.createRoom(name).then(function (options) {
