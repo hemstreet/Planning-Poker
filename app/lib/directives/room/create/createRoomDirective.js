@@ -19,7 +19,7 @@
 
             roomService.createRoom(name).then(function (options) {
                 // sorry
-                $location.path('/room/' + options.id).search('user', options.user.user.name);
+                $location.path('/room/' + options.id);
             });
         };
     };

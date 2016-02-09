@@ -21,7 +21,7 @@
             roomService.getRooms().then(function (rooms) {
                 if (rooms[roomNumber]) {
                     roomService.addUserToRoomById(name, roomNumber).then(function (user) {
-                        $location.path('/room/' + roomNumber).search('user', name);
+                        $location.path('/room/' + roomNumber);
                     });
                 }
                 else {
@@ -29,5 +29,6 @@
                 }
             });
         };
+
     }
 })();

@@ -6,8 +6,14 @@
     function userTileDirective() {
         return {
             restrict: 'E',
-            templateUrl: './lib/directives/user/userTileDirective.html'
+            templateUrl: './lib/directives/user/userTileDirective.html',
+            controller: UserTileController
         }
+    }
+
+    function UserTileController($scope) {
+
+
     }
 
 })();

@@ -1,1 +1,3 @@
-User Tile
+<div ng-repeat="(key, value) in values">
+    <button ng-click="vote(value)" ng-class="{'active-vote': value === activeVote}">{{value}}</button>
+</div>
