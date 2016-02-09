@@ -9,6 +9,7 @@
     "angular-route": "latest",
     "express": "latest",
     "path": "latest",
-    "socket.io": "^1.4.5"
+    "socket.io": "^1.4.5",
+    "underscore": "^1.8.3"
   }
 }

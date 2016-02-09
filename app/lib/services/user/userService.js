@@ -10,10 +10,6 @@
 
             console.log(user, 'voted', value);
 
-            //socket.emit('EVENT:NAME', {
-            //  user:user,
-            //  value:value
-            //})
         }
 
     }

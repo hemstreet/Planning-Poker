@@ -12,6 +12,7 @@
     }
 
     function JoinRoomController($scope, $location, roomService) {
+
         $scope.title = "Join Room";
 
         $scope.submitJoinRoom = function (name, roomNumber) {
@@ -20,7 +21,7 @@
             roomService.getRooms().then(function (rooms) {
                 if (rooms[roomNumber]) {
                     roomService.addUserToRoomById(name, roomNumber).then(function (user) {
-                        $location.path('/room/' + roomNumber);
+                        $location.path('/room/' + roomNumber).search('user', name);
                     });
                 }
                 else {
