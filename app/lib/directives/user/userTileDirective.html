@@ -3,7 +3,8 @@
         <img ng-src="http://thecatapi.com/api/images/get?format=src" class="md-avatar"/>
         <div class="md-list-item-text">
             <h3><strong>{{user.name}}</strong></h3>
-            <p>Voting</p>
+            <p ng-if="user.vote">Voted</p>
+            <md-progress-circular md-mode="indeterminate" ng-if="!user.vote"></md-progress-circular>
         </div>
         <h4 ng-show="allVoted">{{user.vote}}</h4>
     </md-list-item>
