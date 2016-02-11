@@ -15,7 +15,9 @@ npm install
 node server.js
 ```
 
-The web server will then be started at `http://localhost:3002`
+The web server will be started at `http://localhost:3002` ( port 3002 by defualt )
+
+If you wish to change the port run `node server.js --port 8080`
 
 @TODO
 ===
