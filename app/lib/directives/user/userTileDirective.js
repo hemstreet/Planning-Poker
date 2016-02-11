@@ -10,7 +10,7 @@
             controller: UserTileController,
             scope: {
                 users: '=ngModel',
-                allVoted: "=allVoted",
+                allVoted: "=allVoted"
             }
         }
     }

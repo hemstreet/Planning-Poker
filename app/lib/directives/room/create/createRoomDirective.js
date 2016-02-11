@@ -9,7 +9,7 @@
             templateUrl: './lib/directives/room/create/createRoomDirective.html',
             controller: CreateRoomController
         }
-    };
+    }
 
     function CreateRoomController($scope, $location, roomService) {
 
@@ -19,5 +19,5 @@
                 $location.path('/room/' + options.id).search({username: name});
             });
         };
-    };
+    }
 })();

@@ -16,7 +16,7 @@
             roomService.resetVotes(this.roomId);
             $scope.allVoted = false;
 
-        }
+        };
 
         // On initial load, get the user list for the room
         roomService.getRoomById(this.roomId).then(function (room) {
@@ -59,7 +59,7 @@
     }
 
     RoomController.prototype.isRoom = function (roomId) {
-        return (roomId == this.roomId) ? true : false;
+        return (roomId == this.roomId);
     }
 
 })();

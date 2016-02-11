@@ -14,7 +14,7 @@
 
         this.getCurrentRoom = function() {
             return this.currentRoom;
-        }
+        };
 
         this.getRooms = function () {
             var deferred = $q.defer();
