@@ -1,11 +1,10 @@
+Planning Poker
+===
 <p align="center">
     <img src="app/assets/images/logo.png" alt="Logo"/>
 </p>
 
 ***This is a work in progress***
-
-Planning Poker
-===
 
 Getting Started
 ---
