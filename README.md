@@ -20,7 +20,7 @@ If you wish to change the port run `node server.js --port 8080`
 
 @TODO
 ===
-* [ ] Only let room host reset votes
+* [*] Only let room host reset votes
 * [ ] Update User auth / consistent pictures
 * [ ] Force user socket session ( if user comes straight into room, create new session / send them to the homepage )
 * [ ] Fix UI for long names so votes don't overlap

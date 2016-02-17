@@ -1,9 +1,9 @@
 "use strict";
 
 (function () {
-    angular.module('planningPoker').service('roomService', ['$q', 'socket', roomService]);
+    angular.module('planningPoker').service('roomService', ['$q', 'socket', 'userService', roomService]);
 
-    function roomService($q, socket) {
+    function roomService($q, socket, userService) {
 
         this.currentRoom = null;
 
@@ -56,8 +56,12 @@
                 socket.emit('ROOM:CreateRoomById', roomId);
 
                 socket.on('ROOM:DidCreateRoomById', function (id) {
-                    this.addUserToRoomById(user, id).then(function (data) {
-                        data.admin = true;
+
+                    var isAdmin = true;
+                    this.addUserToRoomById(user, id, isAdmin).then(function (data) {
+
+                        userService.setUser(data);
+
                         deferred.resolve({
                             id: id,
                             user: data
@@ -71,13 +75,14 @@
 
         };
 
-        this.addUserToRoomById = function (name, id) {
+        this.addUserToRoomById = function (name, id, isAdmin) {
 
             var deferred = $q.defer();
 
             socket.emit('ROOM:AddUserToRoomById', {
                 name: name,
-                id: id
+                id: id,
+                role: "admin"
             });
 
             socket.on('ROOM:DidAddUserToRoomById', function (user) {
