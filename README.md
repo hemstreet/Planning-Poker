@@ -26,6 +26,8 @@ If you wish to change the port run `node server.js --port 8080`
 * [ ] Fix UI for long names so votes don't overlap
 * [ ] Implement themes
 * [ ] Database integration ( voting history vs actual, average vote value, etc... )
+* [ ] User Interactions ( nag, kick )
+* [ ] Music for all the same votes
 
 Credits
 `Playing Cards by Chad Holmes from the Noun Project`
