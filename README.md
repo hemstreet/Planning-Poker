@@ -28,6 +28,7 @@ If you wish to change the port run `node server.js --port 8080`
 * [ ] Database integration ( voting history vs actual, average vote value, etc... )
 * [ ] User Interactions ( nag, kick )
 * [ ] Music for all the same votes
+* [ ] Remove room from memory when 0 users and inactive for X time ( setInterval to run? )
 
 Credits
 `Playing Cards by Chad Holmes from the Noun Project`
