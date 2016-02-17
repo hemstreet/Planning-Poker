@@ -21,10 +21,11 @@ If you wish to change the port run `node server.js --port 8080`
 
 @TODO
 ===
-```
-Fix UI
-
-```
+* [ ] Only let room host reset votes
+* [ ] Update User auth / consistent pictures
+* [ ] Fix UI for long names so votes don't overlap
+* [ ] Implement themes
+* [ ] Database integration ( voting history vs actual, average vote value, etc... )
 
 Credits
 `Playing Cards by Chad Holmes from the Noun Project`
