@@ -1,9 +1,9 @@
 <h3 class="md-subhead">Your vote: {{activeVote}}</h3>
-    <span ng-repeat="(key, value) in values">
-        <md-button class="md-fab" ng-click="vote(value)" ng-class="{'md-warn': value === activeVote}">{{value}}</md-button>
+<span ng-repeat="(key, value) in values">
+        <md-button class="md-fab" ng-click="vote(value)" ng-class="{'md-warn': value === activeVote}">{{value}}
+        </md-button>
     </span>
 <div layout="row" layout-align="center center">
-    <md-button class="md-raised md-button md-warn" ng-click="resetVotes()">Reset Votes
+    <md-button class="md-raised md-button md-warn" ng-show="user.role == 'admin'" ng-click="resetVotes()" id="resetVotes">Reset Votes
     </md-button>
-</div>
 </div>

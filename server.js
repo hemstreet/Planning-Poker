@@ -4,7 +4,7 @@ var express = require('express');
 var app = express();
 var Socket = require('./lib/Socket');
 var config = require('./config/config');
-var argv = require('yargs').argv
+var argv = require('yargs').argv;
 
 app.set('port', config.port);
 app.use('/', express.static(__dirname + '/app'));

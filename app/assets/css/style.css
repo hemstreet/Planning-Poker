@@ -1,0 +1,12 @@
+user-tile h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 120px;
+}
+
+vote #resetVotes {
+    position:absolute;
+    bottom: 0;
+    right: 0;
+}

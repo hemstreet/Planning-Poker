@@ -16,6 +16,8 @@
         var roomId = roomService.getCurrentRoom();
         $scope.roomId = roomId;
 
+        $scope.user = userService.getUser();
+
         $scope.activeVote = null;
         $scope.values = [
             "1",
