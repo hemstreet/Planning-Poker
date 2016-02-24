@@ -21,10 +21,14 @@ If you wish to change the port run `node server.js --port 8080`
 
 @TODO
 ===
-```
-Fix UI
+* when creator ( with reset votes rights ) leaves a room, give everyone power to reset
+* move vote closer to avatar
+* User auth for same profile images
+* nudge
+* vote on card
+* kick
+* nag
 
-```
 
 Credits
 `Playing Cards by Chad Holmes from the Noun Project`
