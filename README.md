@@ -7,6 +7,8 @@ Getting Started
 ---
 
 ```
+git clone https://github.com/hemstreet/Planning-Poker.git
+cd Planning-Poker
 npm install
 node server.js
 ```
