@@ -1,8 +1,5 @@
 Planning Poker
 ===
-<p align="center">
-    <img src="app/assets/images/logo.png" alt="Logo"/>
-</p>
 
 ***This is a work in progress***
 
@@ -31,7 +28,3 @@ If you wish to change the port run `node server.js --port 8080`
 * [ ] User Interactions ( nag, kick )
 * [ ] Music for all the same votes
 * [ ] Remove room from memory when 0 users and inactive for X time ( setInterval to run? )
-
-
-Credits
-`Playing Cards by Chad Holmes from the Noun Project`
