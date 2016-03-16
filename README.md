@@ -28,4 +28,5 @@ If you wish to change the port run `node server.js --port 8080`
 * [ ] Database integration ( voting history vs actual, average vote value, etc... )
 * [ ] User Interactions ( nag, kick )
 * [ ] Music for all the same votes
-* [x] Remove room from memory when 0 users and inactive for X time ( setInterval to run? )
+* [ ] Remove room from memory when 0 users and inactive for X time ( setInterval to run? )
+* [ ] Admin can remove all users from room ( redirect everyone to homepage )
