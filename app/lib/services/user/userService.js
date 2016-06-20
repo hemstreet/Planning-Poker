@@ -9,10 +9,19 @@
         this.user = null;
 
         this.getUser = function() {
-            return this.user;
+            return {
+                user: this.user,
+                socket: this.socket
+            };
         };
 
         this.setUser = function(data) {
+
+            socket.emit('USER:SocketUser', {
+                data: data,
+                socket: socket
+
+            });
 
             this.user = data.user;
 
@@ -21,11 +30,11 @@
 
         this.vote = function (vote, id) {
             // Callback will be handled by controller on USER:DidVoteByRoomId
-            socket.emit("USER:VoteByRoomId", {
+            this.socket.emit("USER:VoteByRoomId", {
                 userName: $location.search().username,
                 id: id,
                 vote: vote
             });
-        }
+        }.bind(this)
     }
 })();

@@ -5,15 +5,16 @@ var app = express();
 var Socket = require('./lib/Socket');
 var config = require('./config/config');
 var argv = require('yargs').argv;
+var port = argv.port || config.port || 3030;
 
-app.set('port', config.port);
+app.set('port', port);
 app.use('/', express.static(__dirname + '/app'));
 
 app.get('/', function (req, res) {
     res.sendFile('/index.html');
 });
 
-var server = app.listen(argv.port || config.port, function () {
+var server = app.listen(port, function () {
     var serverAddress = server.address();
     var host = serverAddress.address;
     var port = serverAddress.port;

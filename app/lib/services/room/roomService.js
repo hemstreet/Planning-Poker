@@ -16,6 +16,27 @@
             return this.currentRoom;
         };
 
+        this.joinOrCreateRoom = function(data) {
+            var deferred = $q.defer();
+
+            this.getRooms().then(function (rooms) {
+                if (rooms[data.roomNumber]) {
+                    this.addUserToRoomById(name, data.roomNumber).then(function (user) {
+                        deferred.resolve(user);
+                    });
+                }
+                else {
+                    this.createRoom(data).then(function(data) {
+                        deferred.resolve(data);
+                    });
+
+                    //$location.path('/').search({error: true});
+                }
+            }.bind(this));
+
+            return deferred.promise;
+        };
+
         this.getRooms = function () {
             var deferred = $q.defer();
 
@@ -45,14 +66,7 @@
 
             var deferred = $q.defer();
 
-            this.getRooms().then(function (rooms) {
-
-                var roomId = this.generateRoomId();
-
-                while (rooms[roomId]) {
-                    roomId = this.generateRoomId();
-                }
-
+            this.generateRoomId().then(function(roomId) {
                 socket.emit('ROOM:CreateRoomById', roomId);
 
                 socket.on('ROOM:DidCreateRoomById', function (id) {
@@ -68,7 +82,6 @@
                         });
                     }.bind(this));
                 }.bind(this));
-
             }.bind(this));
 
             return deferred.promise;
@@ -82,7 +95,7 @@
             socket.emit('ROOM:AddUserToRoomById', {
                 name: name,
                 id: id,
-                role: "admin"
+                role: (isAdmin) ? "admin" : "voter"
             });
 
             socket.on('ROOM:DidAddUserToRoomById', function (user) {
@@ -103,7 +116,20 @@
         };
 
         this.generateRoomId = function () {
-            return Math.floor(Math.random() * 10000) + 1;
+
+            var deferred = $q.defer();
+            var roomId = 1;
+
+            this.getRooms().then(function (rooms) {
+                while (rooms[roomId]) {
+                    roomId = Math.floor(Math.random() * 100000) + 1;
+                }
+
+                deferred.resolve(roomId);
+            });
+
+
+            return deferred.promise;
         }
 
     }

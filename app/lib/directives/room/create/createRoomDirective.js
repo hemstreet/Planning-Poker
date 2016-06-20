@@ -15,9 +15,9 @@
 
         $scope.submitCreateRoom = function (name) {
 
-            roomService.createRoom(name).then(function (options) {
-                $location.path('/room/' + options.id).search({username: name});
-            });
+            var roomId = roomService.generateRoomId();
+            $location.path('/room/' + roomId).search({username: name});
+
         };
     }
 })();

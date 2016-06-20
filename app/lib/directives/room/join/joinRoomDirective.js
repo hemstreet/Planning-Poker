@@ -1,7 +1,7 @@
 "use strict";
 
 (function () {
-    angular.module('planningPoker').directive('joinRoom', ['$location', 'roomService', joinRoomDirective]);
+    angular.module('planningPoker').directive('joinRoom', ['$location', joinRoomDirective]);
 
     function joinRoomDirective() {
         return {
@@ -11,22 +11,12 @@
         };
     }
 
-    function JoinRoomController($scope, $location, roomService) {
+    function JoinRoomController($scope, $location) {
 
         $scope.submitJoinRoom = function (name, roomNumber) {
 
-            $scope.error = null;
+            $location.path('/room/' + roomNumber).search({username: name});
 
-            roomService.getRooms().then(function (rooms) {
-                if (rooms[roomNumber]) {
-                    roomService.addUserToRoomById(name, roomNumber).then(function (user) {
-                        $location.path('/room/' + roomNumber).search({username: name});
-                    });
-                }
-                else {
-                    $scope.error = true;
-                }
-            });
         };
 
     }

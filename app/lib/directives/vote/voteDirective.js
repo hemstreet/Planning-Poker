@@ -1,7 +1,7 @@
 "use strict";
 
 (function () {
-    angular.module('planningPoker').directive('vote', ['userService', 'roomService', 'socket', voteDirective]);
+    angular.module('planningPoker').directive('vote', ['userService', 'roomService', voteDirective]);
 
     function voteDirective() {
         return {
@@ -11,7 +11,7 @@
         }
     }
 
-    function VoteController($scope, userService, roomService, socket) {
+    function VoteController($scope, userService, roomService) {
 
         var roomId = roomService.getCurrentRoom();
         $scope.roomId = roomId;
@@ -42,7 +42,7 @@
 
         };
 
-        socket.on('ROOM:DidResetVotes', function(data) {
+        $scope.user.socket.on('ROOM:DidResetVotes', function(data) {
             if(roomId == data.id) {
                 $scope.activeVote = '';
             }
