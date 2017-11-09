@@ -1,8 +1,6 @@
 Planning Poker
 ===
 
-***This is a work in progress***
-
 Getting Started
 ---
 
